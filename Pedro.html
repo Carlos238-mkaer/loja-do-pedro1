@@ -1,0 +1,1234 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Athenaeum | Biblioteca Digital & Opiniões de Leitores</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts: Playfair Display (Serif Classic Library feel) & Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        library: {
+                            50: '#f8f7f4',
+                            100: '#efeee6',
+                            200: '#dedcd0',
+                            300: '#c5c2b0',
+                            400: '#a39f88',
+                            500: '#837f68',
+                            600: '#686450',
+                            700: '#524e3e',
+                            800: '#3f3c31',
+                            900: '#2c2a22',
+                            950: '#1a1914',
+                        },
+                        sage: {
+                            50: '#f4f7f4',
+                            100: '#e3ebe4',
+                            200: '#c7d7c9',
+                            300: '#a2bfa6',
+                            400: '#78a07c',
+                            500: '#55825a',
+                            600: '#426946',
+                            700: '#365339',
+                            800: '#2e4430',
+                            900: '#273929',
+                            950: '#141e15',
+                        },
+                        warmGold: {
+                            400: '#d4af37',
+                            500: '#c59b27',
+                            600: '#a37b1c',
+                        }
+                    },
+                    fontFamily: {
+                        serif: ['Playfair Display', 'serif'],
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .library-bg {
+            background-color: #1a1914;
+            background-image: radial-gradient(#2c2a22 1px, transparent 1px), radial-gradient(#2c2a22 1px, #1a1914 1px);
+            background-size: 32px 32px;
+            background-position: 0 0, 16px 16px;
+        }
+        .paper-texture {
+            background-color: #f8f7f4;
+            background-image: radial-gradient(#dedcd0 0.6px, transparent 0.6px);
+            background-size: 14px 14px;
+        }
+        .calm-glass {
+            background: rgba(248, 247, 244, 0.94);
+            backdrop-filter: blur(12px);
+        }
+        .card-shelf-shadow {
+            box-shadow: 0 12px 28px -8px rgba(26, 25, 20, 0.08), 0 4px 12px -4px rgba(26, 25, 20, 0.05);
+        }
+    </style>
+</head>
+<body class="paper-texture text-library-900 font-sans antialiased selection:bg-sage-600 selection:text-white">
+
+    <!-- HEADER & NAVBAR -->
+    <header class="sticky top-0 z-40 calm-glass border-b border-library-200/80 transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            
+            <!-- Logo -->
+            <a href="#" class="flex items-center gap-3.5 group">
+                <div class="w-11 h-11 rounded-xl bg-library-900 flex items-center justify-center text-warmGold-400 text-xl shadow-sm group-hover:bg-sage-800 transition-colors border border-library-700">
+                    <i class="fa-solid fa-book-bookmark"></i>
+                </div>
+                <div>
+                    <span class="text-2xl font-serif font-bold tracking-tight text-library-950 block leading-none">Biblioteca <span class="text-sage-700 font-serif italic">&amp; Estante</span></span>
+                    <span class="text-[11px] text-library-600 font-medium tracking-wide uppercase">Livraria Digital de E-books</span>
+                </div>
+            </a>
+
+            <!-- Navigation Links -->
+            <nav class="hidden md:flex items-center gap-8 font-medium text-sm text-library-800">
+                <a href="#catalogo" class="hover:text-sage-700 transition-colors flex items-center gap-1.5"><i class="fa-solid fa-books text-library-500 text-xs"></i> Catálogo</a>
+                <a href="#diferenciais" class="hover:text-sage-700 transition-colors flex items-center gap-1.5"><i class="fa-solid fa-feather text-library-500 text-xs"></i> Sobre a Biblioteca</a>
+                <a href="#opinioes" class="hover:text-sage-700 transition-colors flex items-center gap-1.5"><i class="fa-solid fa-comments text-library-500 text-xs"></i> Resenhas &amp; Opiniões</a>
+                <a href="#contato" class="hover:text-sage-700 transition-colors flex items-center gap-1.5"><i class="fa-solid fa-user-check text-library-500 text-xs"></i> Vendedor Responsável</a>
+            </nav>
+
+            <!-- Direct Contact Button -->
+            <div class="hidden sm:flex items-center gap-3">
+                <a href="https://wa.me/5519974039794?text=Olá%20Pedro!%20Vim%20pela%20Biblioteca%20Digital%20e%20gostaria%20de%20comprar%20um%20e-book." target="_blank" class="flex items-center gap-2 bg-sage-700 hover:bg-sage-800 text-white px-4 py-2.5 rounded-xl font-semibold text-sm transition-all shadow-sm hover:shadow border border-sage-600">
+                    <i class="fa-brands fa-whatsapp text-lg"></i>
+                    <span>Falar com Pedro</span>
+                </a>
+            </div>
+
+            <!-- Mobile Menu Button -->
+            <button id="mobile-menu-btn" class="md:hidden p-2 rounded-lg text-library-800 hover:bg-library-200">
+                <i class="fa-solid fa-bars text-xl"></i>
+            </button>
+        </div>
+
+        <!-- Mobile Navigation Menu -->
+        <div id="mobile-menu" class="hidden md:hidden border-t border-library-200 bg-library-50 px-4 pt-4 pb-6 space-y-3">
+            <a href="#catalogo" class="block py-2 text-library-800 font-medium hover:text-sage-700"><i class="fa-solid fa-book mr-2 text-library-500"></i>Catálogo de E-books</a>
+            <a href="#diferenciais" class="block py-2 text-library-800 font-medium hover:text-sage-700"><i class="fa-solid fa-feather mr-2 text-library-500"></i>Sobre a Biblioteca</a>
+            <a href="#opinioes" class="block py-2 text-library-800 font-medium hover:text-sage-700"><i class="fa-solid fa-comments mr-2 text-library-500"></i>Resenhas &amp; Opiniões</a>
+            <a href="#contato" class="block py-2 text-library-800 font-medium hover:text-sage-700"><i class="fa-solid fa-user-check mr-2 text-library-500"></i>Vendedor Responsável (Pedro)</a>
+            <div class="pt-3 border-t border-library-200 flex flex-col gap-2">
+                <a href="https://wa.me/5519974039794" target="_blank" class="w-full text-center bg-sage-700 text-white py-2.5 rounded-xl font-semibold text-sm">
+                    <i class="fa-brands fa-whatsapp mr-2"></i> WhatsApp: (19) 97403-9794
+                </a>
+                <a href="mailto:Pedrofxxz@gmail.com" class="w-full text-center bg-library-200 text-library-900 py-2.5 rounded-xl font-semibold text-sm">
+                    <i class="fa-regular fa-envelope mr-2"></i> Pedrofxxz@gmail.com
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- HERO SECTION: CALM LIBRARY ATMOSPHERE -->
+    <section class="relative library-bg text-library-50 overflow-hidden py-20 lg:py-28 border-b border-library-800">
+        <!-- Ambient subtle glow -->
+        <div class="absolute top-10 right-1/3 w-96 h-96 bg-sage-900/30 rounded-full blur-3xl pointer-events-none"></div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="grid lg:grid-cols-12 gap-12 items-center">
+                
+                <!-- Left Hero Text -->
+                <div class="lg:col-span-7 space-y-6 text-center lg:text-left">
+                    <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-sage-900/60 text-sage-300 border border-sage-700/50 text-xs font-medium tracking-wide">
+                        <i class="fa-solid fa-book-open text-warmGold-400"></i> Sua Leitura em Formato Digital Instantâneo
+                    </div>
+                    
+                    <h1 class="text-4xl sm:text-5xl lg:text-6xl font-serif font-bold tracking-tight leading-tight text-white">
+                        Sua Biblioteca Digital com <span class="italic font-normal text-warmGold-400">Calma &amp; Conhecimento</span>
+                    </h1>
+                    
+                    <p class="text-library-200 text-base sm:text-lg max-w-2xl font-sans font-light leading-relaxed">
+                        Encontre e-books transformadores para expandir sua mente no seu próprio tempo. Baixe imediatamente nos formatos PDF ou EPUB e confira as resenhas sinceras da nossa comunidade de leitores.
+                    </p>
+                    
+                    <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 pt-2">
+                        <a href="#catalogo" class="w-full sm:w-auto text-center bg-sage-600 hover:bg-sage-700 text-white font-semibold px-8 py-3.5 rounded-xl shadow transition-all">
+                            <i class="fa-solid fa-book-bookmark mr-2"></i> Explorar Catálogo
+                        </a>
+                        <a href="#opinioes" class="w-full sm:w-auto text-center border border-library-700 hover:border-library-500 bg-library-900/60 text-library-200 font-medium px-6 py-3.5 rounded-xl transition-all">
+                            <i class="fa-solid fa-comments text-warmGold-400 mr-2"></i> Ver Resenhas dos Leitores
+                        </a>
+                    </div>
+
+                    <!-- Seller Responsibility Badge -->
+                    <div class="pt-6 border-t border-library-800/80 mt-8 flex flex-wrap items-center justify-center lg:justify-start gap-4 text-xs text-library-300">
+                        <div class="flex items-center gap-2 bg-library-900/90 px-3 py-1.5 rounded-lg border border-library-800">
+                            <span class="w-2 h-2 rounded-full bg-sage-400 animate-pulse"></span>
+                            <span>Atendimento &amp; Vendas: <strong class="text-white">Pedro</strong></span>
+                        </div>
+                        <a href="mailto:Pedrofxxz@gmail.com" class="hover:text-warmGold-400 transition-colors flex items-center gap-1.5">
+                            <i class="fa-regular fa-envelope text-warmGold-400"></i> Pedrofxxz@gmail.com
+                        </a>
+                        <a href="https://wa.me/5519974039794" target="_blank" class="hover:text-sage-400 transition-colors flex items-center gap-1.5">
+                            <i class="fa-brands fa-whatsapp text-sage-400"></i> (19) 97403-9794
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Right Hero Decorative Visual Showcase -->
+                <div class="lg:col-span-5 flex justify-center">
+                    <div class="relative w-full max-w-md">
+                        <!-- Featured Book Box -->
+                        <div class="relative bg-library-900 border border-library-700 rounded-2xl p-6 shadow-xl space-y-5 text-library-100">
+                            <!-- Banner Badge -->
+                            <div class="flex items-center justify-between text-xs">
+                                <span class="bg-warmGold-500/10 text-warmGold-400 font-semibold px-3 py-1 rounded-md border border-warmGold-500/20">
+                                    <i class="fa-solid fa-crown mr-1"></i> DESTAQUE DA ESTANTE
+                                </span>
+                                <span class="text-library-400 flex items-center gap-1"><i class="fa-solid fa-bolt text-sage-400"></i> Envio Imediato</span>
+                            </div>
+
+                            <!-- Book Graphic Cover Simulated -->
+                            <div class="aspect-[4/3] bg-gradient-to-tr from-library-950 via-library-900 to-sage-950 rounded-xl p-6 flex flex-col justify-between relative overflow-hidden border border-library-800">
+                                <i class="fa-solid fa-book-open text-7xl text-library-700/20 absolute -right-2 -bottom-2"></i>
+                                <div>
+                                    <span class="text-xs uppercase font-medium text-sage-300 tracking-wider">Desenvolvimento Pessoal</span>
+                                    <h3 class="text-2xl font-serif font-bold text-white mt-1 leading-snug">O Poder da Mente Focada</h3>
+                                    <p class="text-xs text-library-400 mt-1">Acervo Biblioteca Digital</p>
+                                </div>
+                                <div class="bg-library-950/80 backdrop-blur-sm p-3 rounded-lg border border-library-800 flex items-center justify-between">
+                                    <span class="text-xs text-library-300 flex items-center gap-1.5">
+                                        <i class="fa-solid fa-file-pdf text-rose-400"></i> Formato Completo
+                                    </span>
+                                    <span class="text-xs font-bold text-warmGold-400">PDF &amp; EPUB</span>
+                                </div>
+                            </div>
+
+                            <div class="flex items-center justify-between">
+                                <div>
+                                    <span class="text-xs text-library-400 line-through">R$ 59,90</span>
+                                    <div class="text-3xl font-extrabold text-white">R$ 29,90</div>
+                                </div>
+                                <div class="text-right">
+                                    <div class="flex items-center gap-1 text-warmGold-400 text-xs">
+                                        <i class="fa-solid fa-star"></i>
+                                        <i class="fa-solid fa-star"></i>
+                                        <i class="fa-solid fa-star"></i>
+                                        <i class="fa-solid fa-star"></i>
+                                        <i class="fa-solid fa-star"></i>
+                                    </div>
+                                    <span class="text-[11px] text-library-400">4.9 (42 avaliações)</span>
+                                </div>
+                            </div>
+
+                            <button onclick="openCheckoutModal('O Poder da Mente Focada', '29.90')" class="w-full bg-sage-700 hover:bg-sage-600 text-white font-semibold py-3.5 rounded-xl transition-all flex items-center justify-center gap-2">
+                                <i class="fa-solid fa-bag-shopping"></i> Comprar com Pedro (Pix / Envio Direto)
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- HIGHLIGHT STATS BAR -->
+    <section class="bg-library-100 border-b border-library-200 py-6 text-library-900">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+                <div class="flex flex-col items-center justify-center space-y-1">
+                    <span class="text-2xl font-serif font-bold text-library-950"><i class="fa-solid fa-book-bookmark text-sage-600 mr-2"></i>+5.000</span>
+                    <span class="text-xs font-medium text-library-600">E-books Entregues</span>
+                </div>
+                <div class="flex flex-col items-center justify-center space-y-1">
+                    <span class="text-2xl font-serif font-bold text-library-950"><i class="fa-solid fa-star text-warmGold-500 mr-2"></i>4.9 / 5.0</span>
+                    <span class="text-xs font-medium text-library-600">Média de Resenhas</span>
+                </div>
+                <div class="flex flex-col items-center justify-center space-y-1">
+                    <span class="text-2xl font-serif font-bold text-library-950"><i class="fa-solid fa-bolt text-sage-600 mr-2"></i>Envio Imediato</span>
+                    <span class="text-xs font-medium text-library-600">PDF &amp; EPUB sem Trava</span>
+                </div>
+                <div class="flex flex-col items-center justify-center space-y-1">
+                    <span class="text-2xl font-serif font-bold text-sage-800"><i class="fa-solid fa-user-check text-sage-600 mr-2"></i>Pedro Vendas</span>
+                    <span class="text-xs font-medium text-library-600">Suporte Humano via WhatsApp</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- LIBRARY DIFFERENTIALS SECTION -->
+    <section id="diferenciais" class="py-16 bg-library-50 border-b border-library-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-2xl mx-auto mb-12">
+                <span class="text-sage-700 font-semibold text-xs uppercase tracking-wider bg-sage-100 px-3 py-1 rounded-full border border-sage-200">
+                    <i class="fa-solid fa-feather-pointed mr-1"></i> Aconchego &amp; Leitura
+                </span>
+                <h2 class="text-3xl font-serif font-bold text-library-950 mt-3">Sua Estante Digital Pessoal</h2>
+                <p class="text-library-700 text-sm mt-2">
+                    Oferecemos uma curadoria especial de e-books selecionados para quem busca desenvolvimento contínuo em uma atmosfera serena de aprendizado.
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-6">
+                <!-- Card 1 -->
+                <div class="bg-white p-6 rounded-2xl border border-library-200 card-shelf-shadow flex items-start gap-4">
+                    <div class="w-12 h-12 rounded-xl bg-library-100 text-library-800 flex items-center justify-center text-xl flex-shrink-0 border border-library-200">
+                        <i class="fa-solid fa-mobile-screen-button"></i>
+                    </div>
+                    <div>
+                        <span class="text-xs font-semibold text-sage-700 uppercase">Compatibilidade Total</span>
+                        <h4 class="font-serif font-bold text-library-950 text-lg">Leia em Qualquer Dispositivo</h4>
+                        <p class="text-xs text-library-600 mt-1">Arquivos em PDF e EPUB perfeitamente formatados para leitura em Kindle, tablet, smartphone ou computador.</p>
+                    </div>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="bg-white p-6 rounded-2xl border border-library-200 card-shelf-shadow flex items-start gap-4">
+                    <div class="w-12 h-12 rounded-xl bg-sage-50 text-sage-800 flex items-center justify-center text-xl flex-shrink-0 border border-sage-200">
+                        <i class="fa-solid fa-handshake-simple"></i>
+                    </div>
+                    <div>
+                        <span class="text-xs font-semibold text-sage-700 uppercase">Atendimento Direto</span>
+                        <h4 class="font-serif font-bold text-library-950 text-lg">Venda Humanizada com Pedro</h4>
+                        <p class="text-xs text-library-600 mt-1">Sem robôs ou plataformas complicadas. Você realiza o Pix e conversa diretamente com o vendedor responsável.</p>
+                    </div>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="bg-white p-6 rounded-2xl border border-library-200 card-shelf-shadow flex items-start gap-4">
+                    <div class="w-12 h-12 rounded-xl bg-library-100 text-library-800 flex items-center justify-center text-xl flex-shrink-0 border border-library-200">
+                        <i class="fa-solid fa-comments"></i>
+                    </div>
+                    <div>
+                        <span class="text-xs font-semibold text-sage-700 uppercase">Comunidade de Leitores</span>
+                        <h4 class="font-serif font-bold text-library-950 text-lg">Resenhas &amp; Avaliações</h4>
+                        <p class="text-xs text-library-600 mt-1">Espaço aberto para trocar opiniões e ler avaliações transparentes de outros leitores antes de escolher seu livro.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CATALOG SECTION: E-BOOK SHELVES -->
+    <section id="catalogo" class="py-20 bg-library-100/60">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
+                <div>
+                    <span class="text-sage-700 font-semibold text-xs uppercase tracking-wider">Acervo Digital</span>
+                    <h2 class="text-3xl sm:text-4xl font-serif font-bold text-library-950 mt-1">Catálogo de E-books</h2>
+                    <p class="text-library-700 text-sm mt-1 max-w-xl">
+                        Escolha sua próxima leitura digital. Todos os e-books contam com envio direto e instantâneo por Pedro.
+                    </p>
+                </div>
+                
+                <!-- Filter Category Buttons -->
+                <div class="flex flex-wrap gap-2" id="filter-buttons">
+                    <button onclick="filterBooks('all')" class="filter-btn active bg-library-900 text-library-50 px-4 py-2 rounded-xl text-xs font-semibold transition-all shadow-sm">Todos os Livros</button>
+                    <button onclick="filterBooks('desenvolvimento')" class="filter-btn bg-white text-library-800 hover:bg-library-200 px-4 py-2 rounded-xl text-xs font-semibold transition-all border border-library-200">Desenvolvimento</button>
+                    <button onclick="filterBooks('negocios')" class="filter-btn bg-white text-library-800 hover:bg-library-200 px-4 py-2 rounded-xl text-xs font-semibold transition-all border border-library-200">Negócios &amp; Vendas</button>
+                    <button onclick="filterBooks('tecnologia')" class="filter-btn bg-white text-library-800 hover:bg-library-200 px-4 py-2 rounded-xl text-xs font-semibold transition-all border border-library-200">Tecnologia &amp; IA</button>
+                </div>
+            </div>
+
+            <!-- E-BOOKS GRID -->
+            <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-8" id="books-container">
+                
+                <!-- Book 1 -->
+                <div class="book-item category-desenvolvimento bg-white rounded-2xl overflow-hidden border border-library-200 hover:border-sage-500 transition-all duration-300 hover:-translate-y-1 card-shelf-shadow flex flex-col justify-between">
+                    <div>
+                        <div class="h-60 bg-gradient-to-tr from-library-950 via-library-900 to-sage-950 p-6 flex flex-col justify-between text-white relative">
+                            <span class="absolute top-4 right-4 bg-sage-500/20 text-sage-300 text-xs px-2.5 py-1 rounded-full font-medium border border-sage-500/30">PDF &amp; EPUB</span>
+                            <i class="fa-solid fa-brain text-6xl opacity-10 absolute bottom-3 right-3 text-sage-300"></i>
+                            <div>
+                                <span class="text-[11px] font-semibold uppercase tracking-wider text-sage-300">Desenvolvimento Pessoal</span>
+                                <h3 class="text-2xl font-serif font-bold mt-1 leading-snug">O Poder da Mente Focada</h3>
+                            </div>
+                            <div class="bg-black/40 backdrop-blur-sm p-2.5 rounded-lg border border-white/10 text-xs text-library-200 flex items-center justify-between">
+                                <span class="flex items-center gap-1.5"><i class="fa-solid fa-file-pdf text-rose-400"></i> Formato Digital Completo</span>
+                                <span class="font-bold text-warmGold-400">E-Book</span>
+                            </div>
+                        </div>
+
+                        <div class="p-6">
+                            <div class="flex items-center justify-between mb-3">
+                                <div class="flex items-center gap-1 text-warmGold-500 text-xs">
+                                    <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                                    <span class="text-library-800 font-bold ml-1">4.9 (42)</span>
+                                </div>
+                                <span class="text-[11px] font-semibold text-sage-800 bg-sage-50 px-2.5 py-0.5 rounded-full border border-sage-200">Entrega Imediata</span>
+                            </div>
+                            <p class="text-library-700 text-xs leading-relaxed line-clamp-3 mb-4">
+                                Guia prático com métodos comprovados para eliminar distrações, cultivar foco profundo nos estudos e elevar sua produtividade diária.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="p-6 pt-0 border-t border-library-100 mt-auto">
+                        <div class="flex items-center justify-between my-4">
+                            <div>
+                                <span class="text-[11px] text-library-500 block">Preço Especial</span>
+                                <span class="text-2xl font-serif font-bold text-library-950">R$ 29,90</span>
+                            </div>
+                            <button onclick="scrollToReview('O Poder da Mente Focada')" class="text-xs font-medium text-library-700 hover:text-sage-700 transition-colors">
+                                <i class="fa-regular fa-comment mr-1"></i> Ver Resenhas
+                            </button>
+                        </div>
+                        <button onclick="openCheckoutModal('O Poder da Mente Focada', '29.90')" class="w-full bg-library-900 hover:bg-library-800 text-white font-semibold py-3 rounded-xl transition-colors flex items-center justify-center gap-2 text-sm shadow-sm">
+                            <i class="fa-solid fa-cart-shopping"></i> Comprar E-Book
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Book 2 -->
+                <div class="book-item category-negocios bg-white rounded-2xl overflow-hidden border border-library-200 hover:border-sage-500 transition-all duration-300 hover:-translate-y-1 card-shelf-shadow flex flex-col justify-between">
+                    <div>
+                        <div class="h-60 bg-gradient-to-tr from-sage-950 via-library-900 to-library-950 p-6 flex flex-col justify-between text-white relative">
+                            <span class="absolute top-4 right-4 bg-sage-500/20 text-sage-300 text-xs px-2.5 py-1 rounded-full font-medium border border-sage-500/30">PDF &amp; EPUB</span>
+                            <i class="fa-solid fa-chart-line text-6xl opacity-10 absolute bottom-3 right-3 text-sage-300"></i>
+                            <div>
+                                <span class="text-[11px] font-semibold uppercase tracking-wider text-sage-300">Negócios &amp; Vendas</span>
+                                <h3 class="text-2xl font-serif font-bold mt-1 leading-snug">Vendas Digitais Descomplicadas</h3>
+                            </div>
+                            <div class="bg-black/40 backdrop-blur-sm p-2.5 rounded-lg border border-white/10 text-xs text-library-200 flex items-center justify-between">
+                                <span class="flex items-center gap-1.5"><i class="fa-solid fa-file-pdf text-rose-400"></i> Formato Digital Completo</span>
+                                <span class="font-bold text-warmGold-400">E-Book</span>
+                            </div>
+                        </div>
+
+                        <div class="p-6">
+                            <div class="flex items-center justify-between mb-3">
+                                <div class="flex items-center gap-1 text-warmGold-500 text-xs">
+                                    <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star-half-stroke"></i>
+                                    <span class="text-library-800 font-bold ml-1">4.8 (38)</span>
+                                </div>
+                                <span class="text-[11px] font-semibold text-sage-800 bg-sage-50 px-2.5 py-0.5 rounded-full border border-sage-200">Entrega Imediata</span>
+                            </div>
+                            <p class="text-library-700 text-xs leading-relaxed line-clamp-3 mb-4">
+                                Aprenda a criar processos simples de atendimento, comunicação direta no WhatsApp e estratégias práticas para fechar negócios online.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="p-6 pt-0 border-t border-library-100 mt-auto">
+                        <div class="flex items-center justify-between my-4">
+                            <div>
+                                <span class="text-[11px] text-library-500 block">Preço Especial</span>
+                                <span class="text-2xl font-serif font-bold text-library-950">R$ 34,90</span>
+                            </div>
+                            <button onclick="scrollToReview('Vendas Digitais Descomplicadas')" class="text-xs font-medium text-library-700 hover:text-sage-700 transition-colors">
+                                <i class="fa-regular fa-comment mr-1"></i> Ver Resenhas
+                            </button>
+                        </div>
+                        <button onclick="openCheckoutModal('Vendas Digitais Descomplicadas', '34.90')" class="w-full bg-library-900 hover:bg-library-800 text-white font-semibold py-3 rounded-xl transition-colors flex items-center justify-center gap-2 text-sm shadow-sm">
+                            <i class="fa-solid fa-cart-shopping"></i> Comprar E-Book
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Book 3 -->
+                <div class="book-item category-tecnologia bg-white rounded-2xl overflow-hidden border border-library-200 hover:border-sage-500 transition-all duration-300 hover:-translate-y-1 card-shelf-shadow flex flex-col justify-between">
+                    <div>
+                        <div class="h-60 bg-gradient-to-tr from-slate-950 via-library-900 to-slate-900 p-6 flex flex-col justify-between text-white relative">
+                            <span class="absolute top-4 right-4 bg-slate-500/20 text-slate-300 text-xs px-2.5 py-1 rounded-full font-medium border border-slate-500/30">PDF &amp; MOBI</span>
+                            <i class="fa-solid fa-robot text-6xl opacity-10 absolute bottom-3 right-3 text-slate-300"></i>
+                            <div>
+                                <span class="text-[11px] font-semibold uppercase tracking-wider text-slate-300">Inteligência Artificial</span>
+                                <h3 class="text-2xl font-serif font-bold mt-1 leading-snug">Dominando Prompts &amp; IA</h3>
+                            </div>
+                            <div class="bg-black/40 backdrop-blur-sm p-2.5 rounded-lg border border-white/10 text-xs text-library-200 flex items-center justify-between">
+                                <span class="flex items-center gap-1.5"><i class="fa-solid fa-file-pdf text-rose-400"></i> Formato Digital Completo</span>
+                                <span class="font-bold text-warmGold-400">E-Book</span>
+                            </div>
+                        </div>
+
+                        <div class="p-6">
+                            <div class="flex items-center justify-between mb-3">
+                                <div class="flex items-center gap-1 text-warmGold-500 text-xs">
+                                    <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                                    <span class="text-library-800 font-bold ml-1">5.0 (54)</span>
+                                </div>
+                                <span class="text-[11px] font-semibold text-sage-800 bg-sage-50 px-2.5 py-0.5 rounded-full border border-sage-200">Entrega Imediata</span>
+                            </div>
+                            <p class="text-library-700 text-xs leading-relaxed line-clamp-3 mb-4">
+                                Manual abrangente com comandos e estruturas avançadas para aplicar IA no seu trabalho, estudos e criação de conteúdo.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="p-6 pt-0 border-t border-library-100 mt-auto">
+                        <div class="flex items-center justify-between my-4">
+                            <div>
+                                <span class="text-[11px] text-library-500 block">Preço Especial</span>
+                                <span class="text-2xl font-serif font-bold text-library-950">R$ 39,90</span>
+                            </div>
+                            <button onclick="scrollToReview('Dominando Prompts & IA')" class="text-xs font-medium text-library-700 hover:text-sage-700 transition-colors">
+                                <i class="fa-regular fa-comment mr-1"></i> Ver Resenhas
+                            </button>
+                        </div>
+                        <button onclick="openCheckoutModal('Dominando Prompts & IA', '39.90')" class="w-full bg-library-900 hover:bg-library-800 text-white font-semibold py-3 rounded-xl transition-colors flex items-center justify-center gap-2 text-sm shadow-sm">
+                            <i class="fa-solid fa-cart-shopping"></i> Comprar E-Book
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Book 4 -->
+                <div class="book-item category-desenvolvimento bg-white rounded-2xl overflow-hidden border border-library-200 hover:border-sage-500 transition-all duration-300 hover:-translate-y-1 card-shelf-shadow flex flex-col justify-between">
+                    <div>
+                        <div class="h-60 bg-gradient-to-tr from-library-950 via-sage-950 to-library-900 p-6 flex flex-col justify-between text-white relative">
+                            <span class="absolute top-4 right-4 bg-sage-500/20 text-sage-300 text-xs px-2.5 py-1 rounded-full font-medium border border-sage-500/30">PDF &amp; EPUB</span>
+                            <i class="fa-solid fa-compass text-6xl opacity-10 absolute bottom-3 right-3 text-sage-300"></i>
+                            <div>
+                                <span class="text-[11px] font-semibold uppercase tracking-wider text-sage-300">Hábitos &amp; Rotina</span>
+                                <h3 class="text-2xl font-serif font-bold mt-1 leading-snug">Hábitos Inabaláveis</h3>
+                            </div>
+                            <div class="bg-black/40 backdrop-blur-sm p-2.5 rounded-lg border border-white/10 text-xs text-library-200 flex items-center justify-between">
+                                <span class="flex items-center gap-1.5"><i class="fa-solid fa-file-pdf text-rose-400"></i> Formato Digital Completo</span>
+                                <span class="font-bold text-warmGold-400">E-Book</span>
+                            </div>
+                        </div>
+
+                        <div class="p-6">
+                            <div class="flex items-center justify-between mb-3">
+                                <div class="flex items-center gap-1 text-warmGold-500 text-xs">
+                                    <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                                    <span class="text-library-800 font-bold ml-1">4.9 (61)</span>
+                                </div>
+                                <span class="text-[11px] font-semibold text-sage-800 bg-sage-50 px-2.5 py-0.5 rounded-full border border-sage-200">Entrega Imediata</span>
+                            </div>
+                            <p class="text-library-700 text-xs leading-relaxed line-clamp-3 mb-4">
+                                Como organizar uma rotina consistente sem sobrecarga mental, superando a procrastinação com constância diária.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="p-6 pt-0 border-t border-library-100 mt-auto">
+                        <div class="flex items-center justify-between my-4">
+                            <div>
+                                <span class="text-[11px] text-library-500 block">Preço Especial</span>
+                                <span class="text-2xl font-serif font-bold text-library-950">R$ 27,90</span>
+                            </div>
+                            <button onclick="scrollToReview('Hábitos Inabaláveis')" class="text-xs font-medium text-library-700 hover:text-sage-700 transition-colors">
+                                <i class="fa-regular fa-comment mr-1"></i> Ver Resenhas
+                            </button>
+                        </div>
+                        <button onclick="openCheckoutModal('Hábitos Inabaláveis', '27.90')" class="w-full bg-library-900 hover:bg-library-800 text-white font-semibold py-3 rounded-xl transition-colors flex items-center justify-center gap-2 text-sm shadow-sm">
+                            <i class="fa-solid fa-cart-shopping"></i> Comprar E-Book
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Book 5 -->
+                <div class="book-item category-negocios bg-white rounded-2xl overflow-hidden border border-library-200 hover:border-sage-500 transition-all duration-300 hover:-translate-y-1 card-shelf-shadow flex flex-col justify-between">
+                    <div>
+                        <div class="h-60 bg-gradient-to-tr from-library-950 via-library-900 to-slate-900 p-6 flex flex-col justify-between text-white relative">
+                            <span class="absolute top-4 right-4 bg-slate-500/20 text-slate-300 text-xs px-2.5 py-1 rounded-full font-medium border border-slate-500/30">PDF &amp; EPUB</span>
+                            <i class="fa-solid fa-piggy-bank text-6xl opacity-10 absolute bottom-3 right-3 text-warmGold-400"></i>
+                            <div>
+                                <span class="text-[11px] font-semibold uppercase tracking-wider text-warmGold-400">Finanças Pessoais</span>
+                                <h3 class="text-2xl font-serif font-bold mt-1 leading-snug">Liberdade Financeira</h3>
+                            </div>
+                            <div class="bg-black/40 backdrop-blur-sm p-2.5 rounded-lg border border-white/10 text-xs text-library-200 flex items-center justify-between">
+                                <span class="flex items-center gap-1.5"><i class="fa-solid fa-file-pdf text-rose-400"></i> Formato Digital Completo</span>
+                                <span class="font-bold text-warmGold-400">E-Book</span>
+                            </div>
+                        </div>
+
+                        <div class="p-6">
+                            <div class="flex items-center justify-between mb-3">
+                                <div class="flex items-center gap-1 text-warmGold-500 text-xs">
+                                    <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star-half-stroke"></i>
+                                    <span class="text-library-800 font-bold ml-1">4.7 (29)</span>
+                                </div>
+                                <span class="text-[11px] font-semibold text-sage-800 bg-sage-50 px-2.5 py-0.5 rounded-full border border-sage-200">Entrega Imediata</span>
+                            </div>
+                            <p class="text-library-700 text-xs leading-relaxed line-clamp-3 mb-4">
+                                Passo a passo para organizar finanças, eliminar pendências financeiras e construir reservas com clareza e segurança.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="p-6 pt-0 border-t border-library-100 mt-auto">
+                        <div class="flex items-center justify-between my-4">
+                            <div>
+                                <span class="text-[11px] text-library-500 block">Preço Especial</span>
+                                <span class="text-2xl font-serif font-bold text-library-950">R$ 32,90</span>
+                            </div>
+                            <button onclick="scrollToReview('Liberdade Financeira')" class="text-xs font-medium text-library-700 hover:text-sage-700 transition-colors">
+                                <i class="fa-regular fa-comment mr-1"></i> Ver Resenhas
+                            </button>
+                        </div>
+                        <button onclick="openCheckoutModal('Liberdade Financeira', '32.90')" class="w-full bg-library-900 hover:bg-library-800 text-white font-semibold py-3 rounded-xl transition-colors flex items-center justify-center gap-2 text-sm shadow-sm">
+                            <i class="fa-solid fa-cart-shopping"></i> Comprar E-Book
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Book 6 -->
+                <div class="book-item category-tecnologia bg-white rounded-2xl overflow-hidden border border-library-200 hover:border-sage-500 transition-all duration-300 hover:-translate-y-1 card-shelf-shadow flex flex-col justify-between">
+                    <div>
+                        <div class="h-60 bg-gradient-to-tr from-slate-950 via-library-950 to-sage-950 p-6 flex flex-col justify-between text-white relative">
+                            <span class="absolute top-4 right-4 bg-slate-500/20 text-slate-300 text-xs px-2.5 py-1 rounded-full font-medium border border-slate-500/30">PDF &amp; EPUB</span>
+                            <i class="fa-solid fa-code text-6xl opacity-10 absolute bottom-3 right-3 text-slate-300"></i>
+                            <div>
+                                <span class="text-[11px] font-semibold uppercase tracking-wider text-slate-300">Programação &amp; Web</span>
+                                <h3 class="text-2xl font-serif font-bold mt-1 leading-snug">Guia do Programador Moderno</h3>
+                            </div>
+                            <div class="bg-black/40 backdrop-blur-sm p-2.5 rounded-lg border border-white/10 text-xs text-library-200 flex items-center justify-between">
+                                <span class="flex items-center gap-1.5"><i class="fa-solid fa-file-pdf text-rose-400"></i> Formato Digital Completo</span>
+                                <span class="font-bold text-warmGold-400">E-Book</span>
+                            </div>
+                        </div>
+
+                        <div class="p-6">
+                            <div class="flex items-center justify-between mb-3">
+                                <div class="flex items-center gap-1 text-warmGold-500 text-xs">
+                                    <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                                    <span class="text-library-800 font-bold ml-1">4.9 (51)</span>
+                                </div>
+                                <span class="text-[11px] font-semibold text-sage-800 bg-sage-50 px-2.5 py-0.5 rounded-full border border-sage-200">Entrega Imediata</span>
+                            </div>
+                            <p class="text-library-700 text-xs leading-relaxed line-clamp-3 mb-4">
+                                Do pensamento lógico até a estruturação de projetos modernos. Um guia claro para quem quer acelerar na programação.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="p-6 pt-0 border-t border-library-100 mt-auto">
+                        <div class="flex items-center justify-between my-4">
+                            <div>
+                                <span class="text-[11px] text-library-500 block">Preço Especial</span>
+                                <span class="text-2xl font-serif font-bold text-library-950">R$ 38,90</span>
+                            </div>
+                            <button onclick="scrollToReview('Guia do Programador Moderno')" class="text-xs font-medium text-library-700 hover:text-sage-700 transition-colors">
+                                <i class="fa-regular fa-comment mr-1"></i> Ver Resenhas
+                            </button>
+                        </div>
+                        <button onclick="openCheckoutModal('Guia do Programador Moderno', '38.90')" class="w-full bg-library-900 hover:bg-library-800 text-white font-semibold py-3 rounded-xl transition-colors flex items-center justify-center gap-2 text-sm shadow-sm">
+                            <i class="fa-solid fa-cart-shopping"></i> Comprar E-Book
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- READERS' OPINIONS & REVIEWS LOUNGE -->
+    <section id="opinioes" class="py-20 bg-white border-t border-b border-library-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="text-sage-700 font-semibold text-xs uppercase tracking-wider bg-sage-50 px-3.5 py-1 rounded-full border border-sage-200">
+                    <i class="fa-solid fa-feather mr-1"></i> Clube de Resenhas dos Leitores
+                </span>
+                <h2 class="text-3xl sm:text-4xl font-serif font-bold text-library-950 mt-3">Opiniões de Quem Já Leu</h2>
+                <p class="text-library-700 mt-2 text-base">
+                    Valorizamos a experiência de cada leitor. Confira as resenhas de quem comprou e deixe também sua avaliação sobre o e-book lido!
+                </p>
+            </div>
+
+            <div class="grid lg:grid-cols-12 gap-12 items-start">
+                
+                <!-- Review Form -->
+                <div class="lg:col-span-5 bg-library-50 p-6 sm:p-8 rounded-2xl border border-library-200 card-shelf-shadow sticky top-28">
+                    <div class="flex items-center gap-3 mb-6">
+                        <div class="w-10 h-10 rounded-full bg-library-900 text-warmGold-400 flex items-center justify-center text-lg">
+                            <i class="fa-solid fa-pen-nib"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-serif font-bold text-library-950">Deixe sua Resenha</h3>
+                            <p class="text-xs text-library-600">Compartilhe sua opinião de leitura com a comunidade.</p>
+                        </div>
+                    </div>
+
+                    <form id="review-form" onsubmit="handleReviewSubmit(event)" class="space-y-4">
+                        <div>
+                            <label for="review-author" class="block text-xs font-semibold text-library-800 uppercase mb-1">Seu Nome ou Apelido</label>
+                            <input type="text" id="review-author" required placeholder="Ex: Ana Clara Santos" class="w-full px-4 py-2.5 rounded-xl border border-library-300 focus:ring-2 focus:ring-sage-600 focus:border-sage-600 outline-none text-sm transition-all bg-white">
+                        </div>
+
+                        <div>
+                            <label for="review-book" class="block text-xs font-semibold text-library-800 uppercase mb-1">E-book Avaliado</label>
+                            <select id="review-book" required class="w-full px-4 py-2.5 rounded-xl border border-library-300 focus:ring-2 focus:ring-sage-600 focus:border-sage-600 outline-none text-sm bg-white transition-all">
+                                <option value="" disabled selected>Escolha o e-book...</option>
+                                <option value="O Poder da Mente Focada">O Poder da Mente Focada</option>
+                                <option value="Vendas Digitais Descomplicadas">Vendas Digitais Descomplicadas</option>
+                                <option value="Dominando Prompts & IA">Dominando Prompts &amp; IA</option>
+                                <option value="Hábitos Inabaláveis">Hábitos Inabaláveis</option>
+                                <option value="Liberdade Financeira">Liberdade Financeira</option>
+                                <option value="Guia do Programador Moderno">Guia do Programador Moderno</option>
+                            </select>
+                        </div>
+
+                        <div>
+                            <label class="block text-xs font-semibold text-library-800 uppercase mb-1">Sua Avaliação (Estrelas)</label>
+                            <div class="flex items-center gap-2 text-2xl text-library-300 cursor-pointer" id="star-rating-picker">
+                                <i class="fa-solid fa-star hover:text-warmGold-500 transition-colors" data-rating="1"></i>
+                                <i class="fa-solid fa-star hover:text-warmGold-500 transition-colors" data-rating="2"></i>
+                                <i class="fa-solid fa-star hover:text-warmGold-500 transition-colors" data-rating="3"></i>
+                                <i class="fa-solid fa-star hover:text-warmGold-500 transition-colors" data-rating="4"></i>
+                                <i class="fa-solid fa-star hover:text-warmGold-500 transition-colors" data-rating="5"></i>
+                                <span class="text-xs font-semibold text-library-600 ml-2" id="rating-label">5/5 Excelente</span>
+                            </div>
+                            <input type="hidden" id="selected-rating" value="5">
+                        </div>
+
+                        <div>
+                            <label for="review-text" class="block text-xs font-semibold text-library-800 uppercase mb-1">Sua Opinião Detalhada</label>
+                            <textarea id="review-text" rows="4" required placeholder="O que achou do livro digital? Quais foram seus maiores aprendizados?" class="w-full px-4 py-2.5 rounded-xl border border-library-300 focus:ring-2 focus:ring-sage-600 focus:border-sage-600 outline-none text-sm transition-all bg-white"></textarea>
+                        </div>
+
+                        <button type="submit" class="w-full bg-library-900 hover:bg-library-800 text-white font-semibold py-3.5 rounded-xl shadow transition-all flex items-center justify-center gap-2 text-sm">
+                            <i class="fa-solid fa-paper-plane"></i> Publicar minha Opinião
+                        </button>
+                    </form>
+                </div>
+
+                <!-- Reviews Feed Display -->
+                <div class="lg:col-span-7 space-y-6">
+                    <div class="flex items-center justify-between pb-4 border-b border-library-200">
+                        <h3 class="text-lg font-serif font-bold text-library-950">Mural de Resenhas Recentes</h3>
+                        <span class="text-xs text-library-500" id="reviews-count">Opiniões publicadas</span>
+                    </div>
+
+                    <div id="reviews-container" class="space-y-4">
+                        <!-- Dynamic reviews injected via JS -->
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+    <!-- HOW PURCHASING WORKS -->
+    <section class="py-20 library-bg text-white border-t border-b border-library-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-2xl mx-auto mb-16">
+                <span class="text-sage-300 font-semibold text-xs uppercase tracking-wider bg-library-900 px-3.5 py-1 rounded-full border border-library-700">
+                    <i class="fa-solid fa-shield-halved mr-1"></i> Processo Simples &amp; Seguro
+                </span>
+                <h2 class="text-3xl sm:text-4xl font-serif font-bold mt-3">Como Adquirir seus E-books</h2>
+                <p class="text-library-300 mt-2 text-sm">
+                    Você fala diretamente com Pedro, realiza o pagamento via Pix e recebe seu livro em arquivo PDF/EPUB de imediato.
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Step 1 -->
+                <div class="bg-library-900/90 p-8 rounded-2xl border border-library-800 flex flex-col justify-between">
+                    <div>
+                        <div class="w-12 h-12 rounded-xl bg-sage-500/20 text-sage-300 flex items-center justify-center text-xl font-bold mb-6 border border-sage-500/30">
+                            1
+                        </div>
+                        <h3 class="text-xl font-serif font-bold mb-2">Escolha na Estante</h3>
+                        <p class="text-library-300 text-xs leading-relaxed">
+                            Navegue em nosso catálogo de e-books, leia as opiniões de outros leitores e escolha o título desejado.
+                        </p>
+                    </div>
+                    <div class="mt-6 pt-4 border-t border-library-800 text-sage-300 text-xs flex items-center gap-2">
+                        <i class="fa-solid fa-check"></i> Formatos PDF &amp; EPUB
+                    </div>
+                </div>
+
+                <!-- Step 2 -->
+                <div class="bg-library-900/90 p-8 rounded-2xl border border-library-800 flex flex-col justify-between">
+                    <div>
+                        <div class="w-12 h-12 rounded-xl bg-sage-500/20 text-sage-300 flex items-center justify-center text-xl font-bold mb-6 border border-sage-500/30">
+                            2
+                        </div>
+                        <h3 class="text-xl font-serif font-bold mb-2">Fale com Pedro</h3>
+                        <p class="text-library-300 text-xs leading-relaxed">
+                            Clique em comprar para iniciar a conversa com Pedro via WhatsApp `(19) 97403-9794` ou E-mail `Pedrofxxz@gmail.com`.
+                        </p>
+                    </div>
+                    <div class="mt-6 pt-4 border-t border-library-800 text-sage-300 text-xs flex items-center gap-2">
+                        <i class="fa-solid fa-check"></i> Atendimento Direto e Rápido
+                    </div>
+                </div>
+
+                <!-- Step 3 -->
+                <div class="bg-library-900/90 p-8 rounded-2xl border border-library-800 flex flex-col justify-between">
+                    <div>
+                        <div class="w-12 h-12 rounded-xl bg-warmGold-500/20 text-warmGold-400 flex items-center justify-center text-xl font-bold mb-6 border border-warmGold-500/30">
+                            3
+                        </div>
+                        <h3 class="text-xl font-serif font-bold mb-2">Receba seu E-book</h3>
+                        <p class="text-library-300 text-xs leading-relaxed">
+                            Após a confirmação do Pix, o arquivo digital é enviado na hora no seu WhatsApp ou E-mail para ler onde quiser.
+                        </p>
+                    </div>
+                    <div class="mt-6 pt-4 border-t border-library-800 text-warmGold-400 text-xs flex items-center gap-2">
+                        <i class="fa-solid fa-check"></i> Leitura Garantida
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- DIRECT CONTACT & RESPONSIBLE SALES CARD -->
+    <section id="contato" class="py-20 bg-library-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="bg-gradient-to-br from-library-950 via-library-900 to-library-950 rounded-3xl p-8 sm:p-12 text-white shadow-xl relative overflow-hidden border border-library-800">
+                
+                <div class="grid lg:grid-cols-12 gap-8 items-center relative z-10">
+                    <div class="lg:col-span-7 space-y-4">
+                        <span class="inline-block bg-sage-500/20 text-sage-300 border border-sage-500/30 text-xs font-semibold px-3.5 py-1 rounded-full uppercase">
+                            <i class="fa-solid fa-user-check mr-1"></i> Vendedor Responsável Oficial
+                        </span>
+                        <h2 class="text-3xl sm:text-4xl font-serif font-bold tracking-tight">Fale Diretamente com Pedro</h2>
+                        <p class="text-library-200 text-sm sm:text-base leading-relaxed">
+                            Caso precise de suporte na escolha de um livro digital ou queira orientações sobre o envio do arquivo via Pix, Pedro está pronto para lhe atender.
+                        </p>
+
+                        <div class="pt-4 grid sm:grid-cols-2 gap-4">
+                            <!-- WhatsApp Box -->
+                            <a href="https://wa.me/5519974039794?text=Olá%20Pedro!%20Gostaria%20de%20saber%20mais%20sobre%20os%20e-books." target="_blank" class="bg-sage-700 hover:bg-sage-600 p-4 rounded-2xl flex items-center gap-4 transition-all hover:scale-[1.02] shadow border border-sage-600 group">
+                                <div class="w-12 h-12 rounded-xl bg-white/20 flex items-center justify-center text-2xl group-hover:rotate-12 transition-transform">
+                                    <i class="fa-brands fa-whatsapp text-white"></i>
+                                </div>
+                                <div>
+                                    <span class="text-xs text-sage-200 block font-medium">WhatsApp Vendas</span>
+                                    <span class="text-base font-bold text-white">+55 19 97403-9794</span>
+                                </div>
+                            </a>
+
+                            <!-- Email Box -->
+                            <a href="mailto:Pedrofxxz@gmail.com?subject=Duvida%20Biblioteca%20Digital" class="bg-library-800 hover:bg-library-700 p-4 rounded-2xl flex items-center gap-4 transition-all hover:scale-[1.02] shadow border border-library-700 group">
+                                <div class="w-12 h-12 rounded-xl bg-white/10 flex items-center justify-center text-xl text-warmGold-400 group-hover:rotate-12 transition-transform">
+                                    <i class="fa-regular fa-envelope"></i>
+                                </div>
+                                <div>
+                                    <span class="text-xs text-library-400 block font-medium">E-mail Vendas</span>
+                                    <span class="text-sm font-bold text-white break-all">Pedrofxxz@gmail.com</span>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="lg:col-span-5 bg-library-900/90 backdrop-blur-md p-6 rounded-2xl border border-library-800 space-y-4">
+                        <h3 class="text-lg font-serif font-bold text-warmGold-400 flex items-center gap-2">
+                            <i class="fa-solid fa-shield-halved"></i> Compromisso com o Leitor
+                        </h3>
+                        <ul class="space-y-3 text-xs text-library-200">
+                            <li class="flex items-start gap-2.5">
+                                <i class="fa-solid fa-check text-sage-400 mt-0.5"></i>
+                                <span><strong>Envio Direto:</strong> Receba o PDF/EPUB logo após a confirmação do Pix.</span>
+                            </li>
+                            <li class="flex items-start gap-2.5">
+                                <i class="fa-solid fa-check text-sage-400 mt-0.5"></i>
+                                <span><strong>Sem Bloqueios:</strong> Compatível com Kindle, Kobo, celulares e tablets.</span>
+                            </li>
+                            <li class="flex items-start gap-2.5">
+                                <i class="fa-solid fa-check text-sage-400 mt-0.5"></i>
+                                <span><strong>Atendimento Individualizado:</strong> Pedro responde pessoalmente cada mensagem.</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- CHECKOUT MODAL -->
+    <div id="checkout-modal" class="fixed inset-0 z-50 hidden bg-library-950/80 backdrop-blur-sm flex items-center justify-center p-4">
+        <div class="bg-white rounded-3xl max-w-lg w-full overflow-hidden shadow-2xl border border-library-300 transform transition-all">
+            
+            <!-- Modal Header -->
+            <div class="bg-library-950 text-white p-6 relative border-b border-library-800">
+                <button onclick="closeCheckoutModal()" class="absolute top-4 right-4 text-library-400 hover:text-white p-2 rounded-lg">
+                    <i class="fa-solid fa-xmark text-xl"></i>
+                </button>
+                <span class="text-xs font-semibold text-warmGold-400 uppercase tracking-wider">Adquirir E-book Digital</span>
+                <h3 class="text-2xl font-serif font-bold mt-1" id="modal-book-title">Nome do Livro</h3>
+                <p class="text-xs text-library-400 mt-1">Vendedor responsável: <strong class="text-white">Pedro</strong></p>
+            </div>
+
+            <!-- Modal Body -->
+            <div class="p-6 space-y-6 bg-library-50">
+                <div class="flex items-center justify-between p-4 bg-white rounded-2xl border border-library-200 shadow-sm">
+                    <div>
+                        <span class="text-xs text-library-500 block">Preço Promocional</span>
+                        <span class="text-3xl font-serif font-bold text-library-950" id="modal-book-price">R$ 0,00</span>
+                    </div>
+                    <span class="bg-sage-100 text-sage-900 text-xs font-semibold px-3 py-1.5 rounded-full flex items-center gap-1">
+                        <i class="fa-solid fa-bolt text-sage-600"></i> Pix &amp; Envio Imediato
+                    </span>
+                </div>
+
+                <div class="space-y-3">
+                    <p class="text-xs font-semibold uppercase tracking-wider text-library-700">Escolha o canal de atendimento com Pedro:</p>
+                    
+                    <!-- WhatsApp Purchase Option -->
+                    <a id="modal-whatsapp-link" href="#" target="_blank" class="w-full bg-sage-700 hover:bg-sage-600 text-white p-4 rounded-xl font-semibold flex items-center justify-between transition-all shadow">
+                        <div class="flex items-center gap-3">
+                            <i class="fa-brands fa-whatsapp text-2xl"></i>
+                            <div class="text-left">
+                                <span class="block text-sm">Pedir pelo WhatsApp</span>
+                                <span class="block text-xs font-normal text-sage-100">+55 19 97403-9794</span>
+                            </div>
+                        </div>
+                        <i class="fa-solid fa-chevron-right text-sm"></i>
+                    </a>
+
+                    <!-- Email Purchase Option -->
+                    <a id="modal-email-link" href="#" class="w-full bg-white hover:bg-library-100 text-library-900 p-4 rounded-xl font-semibold flex items-center justify-between transition-all border border-library-300 shadow-sm">
+                        <div class="flex items-center gap-3">
+                            <i class="fa-regular fa-envelope text-xl text-warmGold-600"></i>
+                            <div class="text-left">
+                                <span class="block text-sm">Pedir por E-mail</span>
+                                <span class="block text-xs font-normal text-library-500">Pedrofxxz@gmail.com</span>
+                            </div>
+                        </div>
+                        <i class="fa-solid fa-chevron-right text-sm text-library-400"></i>
+                    </a>
+                </div>
+
+                <div class="text-center pt-2">
+                    <p class="text-[11px] text-library-500">
+                        <i class="fa-solid fa-lock text-library-400 mr-1"></i> Transação direta e atendimento humanizado com Pedro.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- TOAST NOTIFICATION -->
+    <div id="toast" class="fixed bottom-6 right-6 z-50 hidden bg-library-950 text-white px-5 py-3.5 rounded-2xl shadow-2xl flex items-center gap-3 border border-library-800 transition-all">
+        <i class="fa-solid fa-circle-check text-sage-400 text-xl" id="toast-icon"></i>
+        <span class="text-xs font-medium" id="toast-message">Notificação</span>
+    </div>
+
+    <!-- FOOTER -->
+    <footer class="bg-library-950 text-library-400 py-12 border-t border-library-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
+                
+                <div class="space-y-3 md:col-span-2">
+                    <div class="flex items-center gap-2">
+                        <div class="w-8 h-8 rounded-lg bg-library-800 flex items-center justify-center text-warmGold-400 font-bold text-base border border-library-700">
+                            <i class="fa-solid fa-book-bookmark"></i>
+                        </div>
+                        <span class="text-xl font-serif font-bold text-white">Biblioteca <span class="italic text-sage-400 font-normal">&amp; Estante</span></span>
+                    </div>
+                    <p class="text-xs text-library-400 max-w-sm leading-relaxed">
+                        Sua livraria digital de e-books com foco em conhecimento, praticidade e espaço para resenhas de leitores.
+                    </p>
+                </div>
+
+                <div>
+                    <h4 class="text-white font-serif font-bold text-sm mb-4 uppercase tracking-wider text-warmGold-400">Navegação</h4>
+                    <ul class="space-y-2 text-xs">
+                        <li><a href="#catalogo" class="hover:text-warmGold-400 transition-colors">Estante de E-books</a></li>
+                        <li><a href="#diferenciais" class="hover:text-warmGold-400 transition-colors">Sobre a Biblioteca</a></li>
+                        <li><a href="#opinioes" class="hover:text-warmGold-400 transition-colors">Resenhas de Leitores</a></li>
+                        <li><a href="#contato" class="hover:text-warmGold-400 transition-colors">Contato Vendedor</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="text-white font-serif font-bold text-sm mb-4 uppercase tracking-wider text-warmGold-400">Vendas &amp; Suporte</h4>
+                    <ul class="space-y-2 text-xs">
+                        <li class="flex items-center gap-2 text-white font-semibold">
+                            <i class="fa-regular fa-user text-warmGold-400"></i> Pedro (Responsável)
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <i class="fa-regular fa-envelope text-warmGold-400"></i>
+                            <a href="mailto:Pedrofxxz@gmail.com" class="hover:text-white transition-colors">Pedrofxxz@gmail.com</a>
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <i class="fa-brands fa-whatsapp text-sage-400"></i>
+                            <a href="https://wa.me/5519974039794" target="_blank" class="hover:text-white transition-colors">+55 19 97403-9794</a>
+                        </li>
+                    </ul>
+                </div>
+
+            </div>
+
+            <div class="pt-8 border-t border-library-900 text-[11px] text-center flex flex-col sm:flex-row items-center justify-between gap-4 text-library-500">
+                <p>&copy; 2026 Biblioteca &amp; Estante Digital - Responsável pelas Vendas: Pedro.</p>
+                <div class="flex gap-4">
+                    <a href="#" class="hover:text-library-300">Privacidade</a>
+                    <span>•</span>
+                    <a href="#" class="hover:text-library-300">Termos da Livraria</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JAVASCRIPT LOGIC -->
+    <script>
+        // Initial Sample Reviews (Clean book reviews without coffee references)
+        const initialReviews = [
+            {
+                id: 1,
+                author: "Lucas Mendes",
+                bookTitle: "O Poder da Mente Focada",
+                rating: 5,
+                date: "Há 1 dia",
+                comment: "Excelente leitura! As técnicas de produtividade e organização do tempo me ajudaram muito nos meus estudos. O Pedro enviou o arquivo PDF em minutos pelo WhatsApp.",
+                verified: true
+            },
+            {
+                id: 2,
+                author: "Mariana Costa",
+                bookTitle: "Vendas Digitais Descomplicadas",
+                rating: 5,
+                date: "Há 3 dias",
+                comment: "Leitura clara e direta ao ponto. Aprendi estratégias práticas de comunicação com clientes que já estou aplicando. Recomendo a biblioteca!",
+                verified: true
+            },
+            {
+                id: 3,
+                author: "Rodrigo Fonseca",
+                bookTitle: "Dominando Prompts & IA",
+                rating: 5,
+                date: "Há 5 dias",
+                comment: "O e-book ensina como usar ferramentas de inteligência artificial de forma muito simples. O arquivo EPUB abriu perfeitamente no meu e-reader. Ótimo atendimento do Pedro!",
+                verified: true
+            },
+            {
+                id: 4,
+                author: "Camila Paiva",
+                bookTitle: "Hábitos Inabaláveis",
+                rating: 4,
+                date: "Há 1 semana",
+                comment: "Gostei muito dos conceitos práticos de hábitos sem cobrança excessiva. Recomendo muito para quem quer organizar a rotina.",
+                verified: true
+            }
+        ];
+
+        let reviewsList = [...initialReviews];
+
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Initialize Page
+        window.addEventListener('DOMContentLoaded', () => {
+            renderReviews();
+            setupStarPicker();
+        });
+
+        // Filter Books by Category
+        function filterBooks(category) {
+            const buttons = document.querySelectorAll('.filter-btn');
+            buttons.forEach(btn => {
+                btn.classList.remove('active', 'bg-library-900', 'text-library-50');
+                btn.classList.add('bg-white', 'text-library-800');
+            });
+
+            event.target.classList.add('active', 'bg-library-900', 'text-library-50');
+            event.target.classList.remove('bg-white', 'text-library-800');
+
+            const items = document.querySelectorAll('.book-item');
+            items.forEach(item => {
+                if (category === 'all' || item.classList.contains(`category-${category}`)) {
+                    item.style.display = 'flex';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+        }
+
+        // Render Reader Reviews Feed
+        function renderReviews() {
+            const container = document.getElementById('reviews-container');
+            container.innerHTML = '';
+
+            reviewsList.forEach(review => {
+                const stars = Array.from({ length: 5 }, (_, i) => {
+                    return `<i class="fa-solid fa-star ${i < review.rating ? 'text-warmGold-500' : 'text-library-200'}"></i>`;
+                }).join('');
+
+                const reviewEl = document.createElement('div');
+                reviewEl.className = 'bg-white p-6 rounded-2xl border border-library-200 card-shelf-shadow space-y-3 transition-all hover:border-sage-500/50';
+                reviewEl.innerHTML = `
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center gap-3">
+                            <div class="w-10 h-10 rounded-full bg-library-900 font-serif font-bold text-warmGold-400 flex items-center justify-center border border-library-700">
+                                ${escapeHtml(review.author.charAt(0))}
+                            </div>
+                            <div>
+                                <h4 class="font-serif font-bold text-library-950 text-sm leading-tight">${escapeHtml(review.author)}</h4>
+                                <span class="text-[11px] text-library-500">${review.date}</span>
+                            </div>
+                        </div>
+                        ${review.verified ? `
+                            <span class="inline-flex items-center gap-1 text-[11px] font-semibold text-sage-800 bg-sage-50 border border-sage-200 px-2.5 py-0.5 rounded-full">
+                                <i class="fa-solid fa-check text-sage-600"></i> Leitor Verificado
+                            </span>
+                        ` : ''}
+                    </div>
+
+                    <div class="pt-1">
+                        <div class="flex flex-wrap items-center gap-2 mb-2">
+                            <span class="inline-block bg-library-100 text-library-900 text-xs font-semibold px-2.5 py-1 rounded-md border border-library-200">
+                                <i class="fa-solid fa-book-bookmark text-sage-600 mr-1"></i> ${escapeHtml(review.bookTitle)}
+                            </span>
+                        </div>
+
+                        <div class="flex items-center gap-1 text-xs mb-2">
+                            ${stars}
+                        </div>
+
+                        <p class="text-library-800 text-xs leading-relaxed font-sans">${escapeHtml(review.comment)}</p>
+                    </div>
+                `;
+                container.appendChild(reviewEl);
+            });
+
+            document.getElementById('reviews-count').innerText = `${reviewsList.length} opiniões publicadas`;
+        }
+
+        // Setup Star Rating Picker
+        function setupStarPicker() {
+            const stars = document.querySelectorAll('#star-rating-picker i');
+            const hiddenInput = document.getElementById('selected-rating');
+            const label = document.getElementById('rating-label');
+
+            const labels = {
+                1: '1/5 Ruim',
+                2: '2/5 Regular',
+                3: '3/5 Bom',
+                4: '4/5 Muito Bom',
+                5: '5/5 Excelente'
+            };
+
+            stars.forEach(star => {
+                star.addEventListener('click', () => {
+                    const rating = parseInt(star.getAttribute('data-rating'));
+                    hiddenInput.value = rating;
+                    label.innerText = labels[rating];
+
+                    stars.forEach((s, idx) => {
+                        if (idx < rating) {
+                            s.classList.add('text-warmGold-500');
+                            s.classList.remove('text-library-300');
+                        } else {
+                            s.classList.remove('text-warmGold-500');
+                            s.classList.add('text-library-300');
+                        }
+                    });
+                });
+            });
+        }
+
+        // Handle Form Submission for New Reviews
+        function handleReviewSubmit(e) {
+            e.preventDefault();
+
+            const author = document.getElementById('review-author').value.trim();
+            const bookTitle = document.getElementById('review-book').value;
+            const rating = parseInt(document.getElementById('selected-rating').value);
+            const comment = document.getElementById('review-text').value.trim();
+
+            if (!author || !bookTitle || !comment) {
+                showToast('Por favor, preencha todos os campos do formulário.', 'error');
+                return;
+            }
+
+            const newReview = {
+                id: Date.now(),
+                author,
+                bookTitle,
+                rating,
+                date: 'Agora mesmo',
+                comment,
+                verified: true
+            };
+
+            reviewsList.unshift(newReview);
+            renderReviews();
+
+            // Reset Form
+            document.getElementById('review-form').reset();
+            document.getElementById('selected-rating').value = 5;
+            document.getElementById('rating-label').innerText = '5/5 Excelente';
+            const stars = document.querySelectorAll('#star-rating-picker i');
+            stars.forEach(s => {
+                s.classList.add('text-warmGold-500');
+                s.classList.remove('text-library-300');
+            });
+
+            showToast('Sua resenha foi publicada no mural da biblioteca!');
+        }
+
+        // Helper to scroll to review section
+        function scrollToReview(bookTitle) {
+            const section = document.getElementById('opinioes');
+            section.scrollIntoView({ behavior: 'smooth' });
+
+            const select = document.getElementById('review-book');
+            if (select) {
+                select.value = bookTitle;
+            }
+        }
+
+        // Open Purchase Checkout Modal
+        function openCheckoutModal(title, price) {
+            document.getElementById('modal-book-title').innerText = title;
+            document.getElementById('modal-book-price').innerText = `R$ ${price}`;
+
+            const sellerPhone = '5519974039794';
+            const waMsg = encodeURIComponent(`Olá Pedro! Vim pela Biblioteca Digital e gostaria de comprar o e-book "${title}" por R$ ${price}. Como faço o Pix para receber o arquivo PDF/EPUB?`);
+            document.getElementById('modal-whatsapp-link').href = `https://wa.me/${sellerPhone}?text=${waMsg}`;
+
+            const sellerEmail = 'Pedrofxxz@gmail.com';
+            const mailSubject = encodeURIComponent(`Compra de E-Book: ${title}`);
+            const mailBody = encodeURIComponent(`Olá Pedro,\n\nGostaria de adquirir o e-book "${title}" no valor de R$ ${price}.\n\nPor favor, envie as orientações de pagamento via Pix para envio do arquivo digital.`);
+            document.getElementById('modal-email-link').href = `mailto:${sellerEmail}?subject=${mailSubject}&body=${mailBody}`;
+
+            document.getElementById('checkout-modal').classList.remove('hidden');
+        }
+
+        // Close Checkout Modal
+        function closeCheckoutModal() {
+            document.getElementById('checkout-modal').classList.add('hidden');
+        }
+
+        // Toast Helper
+        function showToast(message, type = 'success') {
+            const toast = document.getElementById('toast');
+            const msgEl = document.getElementById('toast-message');
+            const icon = document.getElementById('toast-icon');
+
+            msgEl.innerText = message;
+            if (type === 'error') {
+                icon.className = 'fa-solid fa-circle-exclamation text-rose-400 text-xl';
+            } else {
+                icon.className = 'fa-solid fa-circle-check text-sage-400 text-xl';
+            }
+
+            toast.classList.remove('hidden');
+            setTimeout(() => {
+                toast.classList.add('hidden');
+            }, 4000);
+        }
+
+        // Escape HTML Helper
+        function escapeHtml(str) {
+            return str.replace(/[&<>"']/g, function(m) {
+                return {
+                    '&': '&amp;',
+                    '<': '&lt;',
+                    '>': '&gt;',
+                    '"': '&quot;',
+                    "'": '&#039;'
+                }[m];
+            });
+        }
+    </script>
+</body>
+</html>
